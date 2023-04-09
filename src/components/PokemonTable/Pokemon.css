@@ -1,0 +1,21 @@
+
+.table-container {
+   background-color: #333;
+   color: white;
+   margin-left: auto;
+   margin-right: auto;
+   padding: 15px;
+   border-spacing: 1px;
+}
+
+
+td {
+   border: solid 1px forestgreen;
+   text-align: center;
+}
+
+th {
+   border: solid 1px forestgreen;
+   text-align: center;
+}
+
