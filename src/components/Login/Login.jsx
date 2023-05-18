@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { getUserByUsername } from "../../database/lowdb";
-
+import { useDispatch } from "react-redux";
+import { login } from "../../features/userSlice";
+import { useHistory } from "react-router-dom/";
 
 const Login = () => {
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleChangeUser = (e) => {
     setUsername(e.target.value);
@@ -28,9 +31,11 @@ const Login = () => {
       setErrorMessage("User not found");
     } else if (password !== user.password) {
       setErrorMessage("Password is incorrect");
+    } else {
+      dispatch(login(user));
+      history.push("/");
     }
   };
-
 
   return (
     <div>
@@ -40,11 +45,11 @@ const Login = () => {
         <form className="login-form">
           <div className="input-container">
             <label>Username </label>
-            <input type="text" name="uname" onChange={handleChangeUser}/>
+            <input type="text" name="uname" onChange={handleChangeUser} />
           </div>
           <div className="input-container">
             <label>Password </label>
-            <input type="password" name="upass" onChange={handleChangePass}/>
+            <input type="password" name="upass" onChange={handleChangePass} />
           </div>
           <div className="button-container">
             <input type="submit" onClick={handleSubmit} />

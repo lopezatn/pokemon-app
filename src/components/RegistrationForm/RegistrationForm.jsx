@@ -22,14 +22,25 @@ const RegistrationForm = () => {
     setUserEmail(userEmail);
   };
 
+  const dispatch = useDispatch();
+
   const handleSubmitBttn = (e) => {
     e.preventDefault();
+
     if (userName && userPassword && userEmail !== "") {
       createUser(userName, userPassword, userEmail);
       console.log("Is it working?", getUsers());
     } else {
       alert("One of the fields is missing!");
     }
+
+    dispatch(login({
+      name:userName,
+      password:userPassword,
+      email:userEmail,
+      loggedIn: true,
+    }))
+
   };
 
   return (

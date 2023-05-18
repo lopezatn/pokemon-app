@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./components/PokemonTable/Pokemon.css";
+import "./Pokemon.css";
 
 const Pokemon = () => {
   const [pokemons, setPokemons] = useState([]);
