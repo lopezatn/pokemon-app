@@ -34,13 +34,14 @@ const RegistrationForm = () => {
       alert("One of the fields is missing!");
     }
 
-    dispatch(login({
-      name:userName,
-      password:userPassword,
-      email:userEmail,
-      loggedIn: true,
-    }))
-
+    dispatch(
+      login({
+        name: userName,
+        password: userPassword,
+        email: userEmail,
+        loggedIn: true,
+      })
+    );
   };
 
   return (
